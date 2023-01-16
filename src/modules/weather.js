@@ -1,6 +1,7 @@
 const weather = (() => {
   function filterData(data) {
     const {
+      dt: timeOfCalculation, // Check if needed
       name: cityName,
       main: {
         temp: temperature,
@@ -14,7 +15,7 @@ const weather = (() => {
         sunrise: sunriseTimestamp,
         sunset: sunsetTimestamp,
       },
-      wind: { speed: windSpeed },
+      visibility,
       weather: [
         {
           main: weatherName,
@@ -22,8 +23,10 @@ const weather = (() => {
           icon: weatherIcon,
         },
       ],
+      wind: { speed: windSpeed },
     } = data
     return {
+      timeOfCalculation,
       cityName,
       countryName,
       temperature,
@@ -33,6 +36,7 @@ const weather = (() => {
       humidity,
       sunriseTimestamp,
       sunsetTimestamp,
+      visibility,
       windSpeed,
       weatherName,
       weatherDescription,
@@ -49,6 +53,7 @@ const weather = (() => {
     try {
       const response = await fetch(apiURL, { mode: 'cors' })
       const data = await response.json()
+      // console.log('Unprocessed:', data)
       if (data.cod === 200) return filterData(data)
       throw new Error(data.message)
     } catch (error) {

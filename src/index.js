@@ -9,7 +9,14 @@ import getUserPosition from './modules/geolocation'
 async function loadInitialData() {
   const position = await getUserPosition()
   const data = await weather.getData(null, position)
-  console.log(data) // TODO: DOM function that feeds everything
+  // console.log(data) // TODO: DOM function that feeds everything
+  console.log(data)
+  const date = new Date(data.timeOfCalculation * 1000)
+  // console.log(date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }))
+  // console.log(date.toLocaleString('en-US', { weekday: 'long' }))
+  utils.convertToImperial(data)
 }
 
 loadInitialData()
+
+console.log(document.querySelector('.day').textContent)

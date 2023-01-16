@@ -6,12 +6,106 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Domine:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="main.js" defer></script>
 </head>
 
 <body>
+  <header>
+    <form>
+      <input type="search" name="search" id="search" placeholder="Search city">
+      <button type="submit">
+        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="style=stroke">
+            <g id="search">
+              <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                d="M16.7464 16.7464C17.0393 16.4535 17.5142 16.4535 17.8071 16.7464L21.7677 20.707C22.0606 20.9999 22.0606 21.4748 21.7677 21.7677C21.4748 22.0606 20.9999 22.0606 20.707 21.7677L16.7464 17.8071C16.4535 17.5142 16.4535 17.0393 16.7464 16.7464Z"
+                fill="#00000" />
+              <path id="vector (Stroke)_2" fill-rule="evenodd" clip-rule="evenodd"
+                d="M11.0529 18.6058C15.2243 18.6058 18.6058 15.2243 18.6058 11.0529C18.6058 6.88155 15.2243 3.5 11.0529 3.5C6.88155 3.5 3.5 6.88155 3.5 11.0529C3.5 15.2243 6.88155 18.6058 11.0529 18.6058ZM11.0529 20.1058C16.0527 20.1058 20.1058 16.0527 20.1058 11.0529C20.1058 6.05312 16.0527 2 11.0529 2C6.05312 2 2 6.05312 2 11.0529C2 16.0527 6.05312 20.1058 11.0529 20.1058Z"
+                fill="#00000" />
+            </g>
+          </g>
+        </svg>
+      </button>
+    </form>
+    <div class="switch-wrapper">
+      <p class="celcius active">C&#176;</p>
+      <p class="fahrenheit">F&#176;</p>
+    </div>
+  </header>
+  <div class="main-content">
+    <div class="left">
+      <h1 class="description">Scattered clouds</h1>
+      <h2 class="city">Tel Aviv</h2>
+      <h3 class="country">IL</h3>
+      <h4 class="temperature">12&#176;C</h4>
+      <p class="day-and-temps">
+        <span class="day">Sunday</span>
+        <span class="min-temp">12&#176;C</span>
+        /
+        <span class="max-temp">16&#176;C</span>
+      </p>
+      <!-- <p class="sunrise-sunset">
+        <img src="images/sunrise.svg" height="20" width="20" alt="Sunrise Icon">
+        <span class="sunrise">06:34</span>
+        &nbsp;
+        <img src="images/sunset.svg" height="20" width="20" alt="Sunset Icon">
+        <span class="sunset">16:34</span>
+      </p> -->
+    </div>
 
+    <div class="right">
+      <div class="feels-like">
+        <img src="images/feels-like.svg" height="30" width="30" alt="Feels like Icon">
+        <div class="info">
+          <p>Feels like</p>
+          <p class="temp">13 &#176;C</p>
+        </div>
+      </div>
+      <div class="humidity">
+        <img src="images/humidity.svg" height="30" width="30" alt="Humidity Icon">
+        <div class="info">
+          <p>Humidity</p>
+          <p class="percentage">38</p>
+        </div>
+      </div>
+      <div class="wind">
+        <img src="images/wind.svg" height="30" width="30" alt="Wind Speed Icon">
+        <!-- <img src="images/.svg" height="30" width="30" alt="Icon"> -->
+        <div class="info">
+          <p>Wind Speed</p>
+          <p class="speed">8 Km/h</p>
+        </div>
+      </div>
+      <div class="visibility">
+        <img src="images/visibility.svg" height="30" width="30" alt="Visibility Icon">
+        <div class="info">
+          <p>Visibility</p>
+          <p class="distance">10 Km</p>
+        </div>
+      </div>
+      <div class="sunrise">
+        <img src="images/sunrise.svg" height="30" width="30" alt="Sunrise Icon">
+        <div class="info">
+          <p>Sunrise</p>
+          <p class="time">06:34</p>
+        </div>
+      </div>
+      <div class="sunset">
+        <img src="images/sunset.svg" height="30" width="30" alt="Sunset Icon">
+        <div class="info">
+          <p>Sunset</p>
+          <p class="time">12:58 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

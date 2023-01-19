@@ -1,42 +1,62 @@
 const utils = (() => {
+  function _shortenDecimal(number) {
+    return Number((number).toFixed(2).replace(/[.,]00$/, ""))
+  }
+
   function convertCToF(tempInCelcius) {
-    return Math.floor(tempInCelcius * 1.8 + 32)
+    return _shortenDecimal(tempInCelcius * 1.8 + 32)
   }
 
   function convertKmhToMph(speedInKmh) {
-    return Math.floor(speedInKmh / 1.609344)
+    return _shortenDecimal(speedInKmh / 1.609344)
   }
 
   function convertMetersToKm(meters) {
-    return Math.floor(meters / 1000)
+    return _shortenDecimal(meters / 1000)
   }
 
   function convertMetersToMiles(meters) {
-    return Math.floor(meters * 0.00062137)
+    return _shortenDecimal(meters * 0.00062137)
+  }
+
+  function convertTimestampToDay(timestamp) {
+    const date = new Date(timestamp * 1000)
+    return date.toLocaleString('en-US', { weekday: 'long' })
+  }
+
+  function convertTimestampToHour(timestamp, timezone, hourFormat) {
+    const format = (Number(hourFormat) == 12) ? true : false
+    const date = new Date((timestamp + timezone) * 1000)
+    return date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', timeZone: 'UTC', hour12: format })
   }
 
   function convertToImperial(data) {
-    const newData = {
+    const convertedData = Object.assign({}, data, {
       temperature: convertCToF(data.temperature),
       feelsLike: convertCToF(data.feelsLike),
       maxTemp: convertCToF(data.maxTemp),
       minTemp: convertCToF(data.minTemp),
       windSpeed: convertKmhToMph(data.windSpeed),
-    } // TODO: continue this. also check what to do with roundData since there is Math.floor() in the conversion utilities
-    console.log(newData)
+      visibility: convertMetersToMiles(data.visibility),
+      sunriseTimestamp: convertTimestampToHour(data.sunriseTimestamp, data.timezone, 12),
+      sunsetTimestamp: convertTimestampToHour(data.sunsetTimestamp, data.timezone, 12),
+    })
+    return convertedData
   }
 
-  function roundData(data) {
-
+  function convertToMetric(data) {
+    const convertedData = Object.assign({}, data, {
+      visibility: convertMetersToKm(data.visibility),
+      sunriseTimestamp: convertTimestampToHour(data.sunriseTimestamp, data.timezone, 24),
+      sunsetTimestamp: convertTimestampToHour(data.sunsetTimestamp, data.timezone, 24),
+    })
+    return convertedData
   }
 
   return {
-    convertCToF,
-    convertKmhToMph,
-    convertMetersToKm,
-    convertMetersToMiles,
+    convertTimestampToDay,
     convertToImperial,
-    roundData,
+    convertToMetric,
   }
 })()
 

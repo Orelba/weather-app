@@ -17,7 +17,6 @@ async function getUserPosition() {
     }
   } catch (error) {
     console.warn(`${error.message}, default location will be used.`)
-    return { longitude: -99.1277, latitude: 19.4285 } // Mexico city default coordinates
   }
 }
 

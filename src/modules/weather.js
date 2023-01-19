@@ -1,7 +1,7 @@
 const weather = (() => {
   function filterData(data) {
     const {
-      dt: timeOfCalculation, // Check if needed
+      dt: timeOfCalculation,
       name: cityName,
       main: {
         temp: temperature,
@@ -15,6 +15,7 @@ const weather = (() => {
         sunrise: sunriseTimestamp,
         sunset: sunsetTimestamp,
       },
+      timezone,
       visibility,
       weather: [
         {
@@ -24,7 +25,9 @@ const weather = (() => {
         },
       ],
       wind: { speed: windSpeed },
+      cod,
     } = data
+
     return {
       timeOfCalculation,
       cityName,
@@ -36,31 +39,31 @@ const weather = (() => {
       humidity,
       sunriseTimestamp,
       sunsetTimestamp,
+      timezone,
       visibility,
       windSpeed,
       weatherName,
       weatherDescription,
       weatherIcon,
+      cod
     }
   }
 
   async function getData(cityName, coordinates) {
-    const API_KEY = '4a690db620f1dcc5aa19b64e38ecec86' // Not safe, but it's a free API key just for the purpose of this project.
+    const APIKey = '4a690db620f1dcc5aa19b64e38ecec86' // Not safe, but it's a free API key just for the purpose of this project.
     const apiURL = coordinates
-      ? `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=metric&appid=${API_KEY}`
-      : `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&units=metric&appid=${API_KEY}`
+      ? `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=metric&appid=${APIKey}`
+      : `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&units=metric&appid=${APIKey}`
 
     try {
       const response = await fetch(apiURL, { mode: 'cors' })
       const data = await response.json()
-      // console.log('Unprocessed:', data)
       if (data.cod === 200) return filterData(data)
-      throw new Error(data.message)
+      else return data
     } catch (error) {
-      console.error(error)
+      console.error('Fetch Error:', error.message)
     }
   }
-
   return { getData }
 })()
 

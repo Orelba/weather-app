@@ -12,13 +12,14 @@
     href="https://fonts.googleapis.com/css2?family=Domine:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
   <script src="main.js" defer></script>
 </head>
 
-<body>
+<body class="preload">
   <header>
     <form>
-      <input type="search" name="search" id="search" placeholder="Search city">
+      <input type="search" name="search" id="search" placeholder="Search location">
       <button type="submit">
         <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="style=stroke">
@@ -35,21 +36,24 @@
       </button>
     </form>
     <div class="switch-wrapper">
-      <p class="celcius active">C&#176;</p>
-      <p class="fahrenheit">F&#176;</p>
+      <p class="switch-btn celcius" data-system="metric">C&#176;</p>
+      <p class="switch-btn fahrenheit" data-system="imperial">F&#176;</p>
     </div>
   </header>
   <div class="main-content">
     <div class="left">
-      <h1 class="description">Scattered clouds</h1>
-      <h2 class="city">Tel Aviv</h2>
-      <h3 class="country">IL</h3>
-      <h4 class="temperature">12&#176;C</h4>
+      <div class="description-wrapper">
+        <h1 class="description"></h1>
+        <img class="condition white" src="" height="40" width="40" alt=" ">
+      </div>
+      <h2 class="city"></h2>
+      <h3 class="country"></h3>
+      <h4 class="temperature"></h4>
       <p class="day-and-temps">
-        <span class="day">Sunday</span>
-        <span class="min-temp">12&#176;C</span>
+        <span class="day"></span>
+        <span class="min-temp"></span>
         /
-        <span class="max-temp">16&#176;C</span>
+        <span class="max-temp"></span>
       </p>
       <!-- <p class="sunrise-sunset">
         <img src="images/sunrise.svg" height="20" width="20" alt="Sunrise Icon">
@@ -62,50 +66,55 @@
 
     <div class="right">
       <div class="feels-like">
-        <img src="images/feels-like.svg" height="30" width="30" alt="Feels like Icon">
+        <img class="white" src="images/feels-like.svg" height="30" width="30" alt="Feels like Icon">
         <div class="info">
           <p>Feels like</p>
-          <p class="temp">13 &#176;C</p>
+          <p class="temp"></p>
         </div>
       </div>
       <div class="humidity">
-        <img src="images/humidity.svg" height="30" width="30" alt="Humidity Icon">
+        <img class="white" src="images/humidity.svg" height="30" width="30" alt="Humidity Icon">
         <div class="info">
           <p>Humidity</p>
-          <p class="percentage">38</p>
+          <p class="percentage"></p>
         </div>
       </div>
       <div class="wind">
-        <img src="images/wind.svg" height="30" width="30" alt="Wind Speed Icon">
-        <!-- <img src="images/.svg" height="30" width="30" alt="Icon"> -->
+        <img class="white" src="images/wind.svg" height="30" width="30" alt="Wind Speed Icon">
         <div class="info">
           <p>Wind Speed</p>
-          <p class="speed">8 Km/h</p>
+          <p class="speed"></p>
         </div>
       </div>
       <div class="visibility">
-        <img src="images/visibility.svg" height="30" width="30" alt="Visibility Icon">
+        <img class="white" src="images/visibility.svg" height="30" width="30" alt="Visibility Icon">
         <div class="info">
           <p>Visibility</p>
-          <p class="distance">10 Km</p>
+          <p class="distance"></p>
         </div>
       </div>
       <div class="sunrise">
-        <img src="images/sunrise.svg" height="30" width="30" alt="Sunrise Icon">
+        <img class="white" src="images/sunrise.svg" height="30" width="30" alt="Sunrise Icon">
         <div class="info">
           <p>Sunrise</p>
-          <p class="time">06:34</p>
+          <p class="time"></p>
         </div>
       </div>
       <div class="sunset">
-        <img src="images/sunset.svg" height="30" width="30" alt="Sunset Icon">
+        <img class="white" src="images/sunset.svg" height="30" width="30" alt="Sunset Icon">
         <div class="info">
           <p>Sunset</p>
-          <p class="time">12:58 PM</p>
+          <p class="time"></p>
         </div>
       </div>
     </div>
   </div>
+  <footer>
+    <p>Orelba on Github</p>
+    <a href="https://github.com/Orelba/weather-app" target="_blank">
+      <img src="images/GitHub-Mark-Light-32px.png" height="15" width="15" alt="Github Icon">
+    </a>
+  </footer>
 </body>
 
 </html>

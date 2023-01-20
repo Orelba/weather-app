@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
+  <title>Weather</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -16,23 +16,12 @@
   <script src="main.js" defer></script>
 </head>
 
-<body class="preload">
+<body>
   <header>
     <form>
       <input type="search" name="search" id="search" placeholder="Search location">
       <button type="submit">
-        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g id="style=stroke">
-            <g id="search">
-              <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                d="M16.7464 16.7464C17.0393 16.4535 17.5142 16.4535 17.8071 16.7464L21.7677 20.707C22.0606 20.9999 22.0606 21.4748 21.7677 21.7677C21.4748 22.0606 20.9999 22.0606 20.707 21.7677L16.7464 17.8071C16.4535 17.5142 16.4535 17.0393 16.7464 16.7464Z"
-                fill="#00000" />
-              <path id="vector (Stroke)_2" fill-rule="evenodd" clip-rule="evenodd"
-                d="M11.0529 18.6058C15.2243 18.6058 18.6058 15.2243 18.6058 11.0529C18.6058 6.88155 15.2243 3.5 11.0529 3.5C6.88155 3.5 3.5 6.88155 3.5 11.0529C3.5 15.2243 6.88155 18.6058 11.0529 18.6058ZM11.0529 20.1058C16.0527 20.1058 20.1058 16.0527 20.1058 11.0529C20.1058 6.05312 16.0527 2 11.0529 2C6.05312 2 2 6.05312 2 11.0529C2 16.0527 6.05312 20.1058 11.0529 20.1058Z"
-                fill="#00000" />
-            </g>
-          </g>
-        </svg>
+        <img class="search-img" src="./images/search.svg" height="20" width="20" alt="Search Button Icon">
       </button>
     </form>
     <div class="switch-wrapper">
@@ -115,6 +104,9 @@
       <img src="images/GitHub-Mark-Light-32px.png" height="15" width="15" alt="Github Icon">
     </a>
   </footer>
+  <div class="preload-overlay">
+    <span class="preloader"></span>
+  </div>
 </body>
 
 </html>

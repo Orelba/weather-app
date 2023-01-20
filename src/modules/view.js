@@ -1,5 +1,5 @@
 import weather from './weather'
-import getUserPosition from './geolocation'
+import geolocation from './geolocation'
 import storage from './storage'
 import utils from './utils'
 
@@ -28,7 +28,7 @@ const view = (() => {
       removePreloadOverlay()
 
       // Switch to local data if user geolocation permission is granted
-      const position = await getUserPosition()
+      const position = await geolocation.getUserPosition()
       if (position !== undefined) {
         const data = await weather.getData(null, position)
         lastFetchData = Object.assign({}, data)

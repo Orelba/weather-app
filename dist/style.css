@@ -261,7 +261,7 @@ footer a img:hover {
   transition: .8s ease-out;
 }
 
-.preload {
+.preloader {
   width: 180px;
   height: 140px;
   display: block;

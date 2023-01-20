@@ -13,13 +13,19 @@ const view = (() => {
     initSystemOfMeasurementSwitch()
   }
 
+  function removePreloadOverlay() {
+    const overlay = document.querySelector('.preload-overlay')
+    overlay.style.visibility = 'collapse'
+    overlay.style.opacity = 0;
+  }
+
   async function loadInitialData() {
     try {
       // Load default data (to be shown in the meantime if user hasn't yet allowed or blocked geolocation)
       const initialData = await weather.getData('New York')
       lastFetchData = Object.assign({}, initialData)
       renderView(convertData(initialData, storage.getSystemOfMeasurement()))
-      document.body.classList.remove('preload') // TODO: Insert the loading animation to preload
+      removePreloadOverlay()
 
       // Switch to local data if user geolocation permission is granted
       const position = await getUserPosition()
@@ -31,7 +37,7 @@ const view = (() => {
     } catch (error) {
       console.error(error)
     } finally {
-      document.body.classList.remove('preload')
+      removePreloadOverlay()
     }
   }
 
@@ -55,13 +61,40 @@ const view = (() => {
     if (errorSpan !== null) errorSpan.remove()
   }
 
+  function renderSearchLoader() {
+    const searchButton = document.querySelector('button[type="submit"]')
+    const loaderSpan = document.createElement('span')
+    loaderSpan.classList.add('loader')
+
+    if (searchButton.getElementsByClassName('search-img')) {
+      searchButton.removeChild(searchButton.children[0])
+      searchButton.appendChild(loaderSpan)
+    }
+  }
+
+  function removeSearchLoader() {
+    const searchButton = document.querySelector('button[type="submit"]')
+    const searchImg = document.createElement('img')
+    searchImg.src = './images/search.svg'
+    searchImg.height = 20
+    searchImg.width = 20
+    searchImg.alt = 'Search Button Icon'
+    searchImg.classList.add('search-img')
+
+    if (searchButton.getElementsByClassName('loader')) {
+      searchButton.removeChild(searchButton.children[0])
+      searchButton.appendChild(searchImg)
+    }
+  }
+
   async function searchLocation(e) {
     e.preventDefault()
     removeSearchError()
-
     try {
       const searchValue = document.querySelector('input[type="search"]').value.trim()
       if (searchValue === '') return renderSearchError('Please enter a location name')
+
+      renderSearchLoader()
 
       const data = await weather.getData(searchValue)
 
@@ -73,6 +106,8 @@ const view = (() => {
       }
     } catch (error) {
       console.error('Search error:', error)
+    } finally {
+      removeSearchLoader()
     }
   }
 

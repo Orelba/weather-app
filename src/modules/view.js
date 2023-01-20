@@ -101,6 +101,7 @@ const view = (() => {
       if (data.cod === 200) {
         lastFetchData = Object.assign({}, data)
         renderView(convertData(data, storage.getSystemOfMeasurement()))
+        console.log(data)
       } else if (data.cod === '404' || data.cod === '400') {
         renderSearchError('No results found')
       }
@@ -202,7 +203,7 @@ const view = (() => {
     conditionImg.src = getWeatherIconURL(data.weatherIcon)
     city.textContent = data.cityName
     country.textContent = data.countryName
-    day.textContent = utils.convertTimestampToDay(data.timeOfCalculation)
+    day.textContent = utils.convertTimestampToDay(data.timeOfCalculation, data.timezone)
     temperature.textContent = Math.round(data.temperature) + getUnitSymbol(measurementSystem, 'temp')
     minTemp.textContent = Math.round(data.minTemp) + getUnitSymbol(measurementSystem, 'temp')
     maxTemp.textContent = Math.round(data.maxTemp) + getUnitSymbol(measurementSystem, 'temp')

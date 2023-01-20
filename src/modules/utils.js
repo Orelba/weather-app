@@ -19,9 +19,9 @@ const utils = (() => {
     return _shortenDecimal(meters * 0.00062137)
   }
 
-  function convertTimestampToDay(timestamp) {
-    const date = new Date(timestamp * 1000)
-    return date.toLocaleString('en-US', { weekday: 'long' })
+  function convertTimestampToDay(timestamp, timezone) {
+    const date = new Date((timestamp + timezone) * 1000)
+    return date.toLocaleString('en-US', { weekday: 'long', timeZone: 'UTC'})
   }
 
   function convertTimestampToHour(timestamp, timezone, hourFormat) {
